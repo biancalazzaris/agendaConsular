@@ -24,6 +24,14 @@ app.get('/perfil/novasolicitacao', (req, res) => {
     res.render('new');
     });
 
+app.get('/perfil/agendamentos', (req, res) => {
+  res.render('view');
+  });
+
+app.get('/ex', (req, res) => {
+  res.render('exemplo');
+  });
+
 
 app.listen(5000, (erro) => {
   if(erro) {
