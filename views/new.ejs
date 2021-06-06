@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+
 <%- include('./partials/header.ejs') %>
 
-<%- include('./partials/layout.ejs') %>
+<div class="container bg-body">
+    <div class="d-flex justify-content-around">
+        <%- include('./partials/menu.ejs') %>
+        <div class="container p-4">
+            <h1>Nova solicitação</h1>
+        </div>
+    </div>
+</div>
 
 <%- include ('./partials/footer.ejs') %>

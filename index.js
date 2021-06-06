@@ -44,4 +44,3 @@ app.listen(5000, (erro) => {
     console.log('Servidor rodando no endereço: http://localhost:5000');
   }
 });
-
