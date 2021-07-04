@@ -3,9 +3,9 @@
 
 <%- include('./partials/header.ejs') %>
 
-  <div class="cadastro container bg-body">
+  <div class="container-fluid p-2 d-flex justify-content-center ">
 
-    <div class="container w-50 p-4">
+    <div class="my-3 p-4 col-6 bg-light ">
       <form>
         <div class="form-group">
           <label for="example-text-input">Nome completo</label>
@@ -13,11 +13,11 @@
         </div>
         <div class="form-group ">
           <label for="exampleInputEmail1">Endereço de email</label>
-          <input type="email" class="form-control" placeholder="Seu email" id="exampleInputEmail1">
+          <input type="email" class="form-control" placeholder="eu@gmail.com" id="exampleInputEmail1">
         </div>
         <div class="form-group ">
           <label for="example-tel-input">Telefone</label>
-          <input class="form-control" type="tel" placeholder="1-(555)-555-5555" id="example-tel-input">
+          <input class="form-control" type="tel" placeholder="4799555-5555" id="example-tel-input">
         </div>
         <div class="form-group">
           <label for="example-cpf">CPF</label>
@@ -25,16 +25,15 @@
         </div>
         <div class="form-group ">
           <label for="exampleInputPassword1">Senha</label>
-          <input class="form-control" type="password" placeholder="Senha" id="exampleInputPassword1">
+          <input class="form-control" type="password" placeholder="123SenhaFort3" id="exampleInputPassword1">
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Aceito os termos de uso</label>
+          <label class="form-check-label" for="exampleCheck1">Aceito os termos de uso e privacidade.</label>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <a href="/home"><button type="submit" class="btn btn-success my-4"> Enviar</a></button>
       </form>
     </div>
-
   </div>
 
   <%- include ('./partials/footer.ejs') %>

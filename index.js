@@ -9,11 +9,26 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.render('login');
+  res.render('index');
 });
 
-app.get('/index', (req, res) => {
-    res.render('index');
+app.get('/login', (req,res) => {
+  res.render('login');
+
+  // const email = req.params.email
+  // const senha = req.params.senha
+
+  // res.redirect('index');
+  // se email & senha for diferente vazio
+  // console.log {erro}
+  // se email & senha = email & senha no banco então console.log conectado
+});
+
+// app.get('/index', (req, res) => {
+//     res.render('index');
+//   });
+app.get('/home', (req, res) => {
+  res.render('home');
   });
 
 app.get('/cadastro', (req, res) => {
@@ -24,17 +39,14 @@ app.get('/perfil', (req, res) => {
     res.render('profile');
     });
 
-app.get('/perfil/novasolicitacao', (req, res) => {
+app.get('/novasolicitacao', (req, res) => {
     res.render('new');
     });
 
-app.get('/perfil/agendamentos', (req, res) => {
+app.get('/agendamentos', (req, res) => {
   res.render('view');
   });
 
-app.get('/ex', (req, res) => {
-  res.render('exemplo');
-  });
 
 
 app.listen(5000, (erro) => {
