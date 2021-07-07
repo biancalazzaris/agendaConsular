@@ -6,32 +6,57 @@
   <div class="container-fluid p-2 d-flex justify-content-center ">
 
     <div class="my-3 p-4 col-6 bg-light ">
-      <form>
+      <form action="/salvarcadastro" method="POST">
         <div class="form-group">
           <label for="example-text-input">Nome completo</label>
-          <input type="text" class="form-control" placeholder="Artisanal kale" id="example-text-input">
+          <input 
+          name="nome"
+          type="text" 
+          class="form-control" 
+          placeholder="Artisanal kale" 
+          id="example-text-input">
         </div>
         <div class="form-group ">
           <label for="exampleInputEmail1">Endereço de email</label>
-          <input type="email" class="form-control" placeholder="eu@gmail.com" id="exampleInputEmail1">
+          <input 
+          name="email"
+          type="email" 
+          class="form-control" 
+          placeholder="eu@gmail.com" 
+          id="exampleInputEmail1">
         </div>
         <div class="form-group ">
           <label for="example-tel-input">Telefone</label>
-          <input class="form-control" type="tel" placeholder="4799555-5555" id="example-tel-input">
+          <input 
+          name="tel"
+          class="form-control" 
+          type="tel" 
+          placeholder="4799555-5555" 
+          id="example-tel-input">
         </div>
         <div class="form-group">
           <label for="example-cpf">CPF</label>
-          <input class="form-control" type="text" maxlength="14" placeholder="123.456.789-01" id="example-cpf">
+          <input 
+          name="cpf"
+          class="form-control" 
+          type="text" maxlength="14" 
+          placeholder="123.456.789-01" 
+          id="example-cpf">
         </div>
         <div class="form-group ">
           <label for="exampleInputPassword1">Senha</label>
-          <input class="form-control" type="password" placeholder="123SenhaFort3" id="exampleInputPassword1">
+          <input 
+          name="senha"
+          class="form-control" 
+          type="password" 
+          placeholder="123SenhaFort3" 
+          id="exampleInputPassword1">
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Aceito os termos de uso e privacidade.</label>
         </div>
-        <a href="/home"><button type="submit" class="btn btn-success my-4"> Enviar</a></button>
+        <button type="submit" class="btn btn-success my-4"> Enviar</button>
       </form>
     </div>
   </div>
