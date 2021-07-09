@@ -55,25 +55,18 @@ app.get('/perfil/:id', (req, res) => {
   Register.findAll({
     raw: true, 
     where: {id: id}
-  }).then((registers) => {
-    console.log (registers)
+  }).then((register) => {
+    console.log (register)
     res.render('profile', {
-      registers: registers
+      register: register
     });
   });
   
 });
 
-app.get('novasolicitacao/:id', (req, res) => {
-  let id  = req.params;
-  Register.findAll({
-    raw: true,
-    where: { id: id }
-  }).then((registers) => {
+app.get('/novasolicitacao/', (req, res) => {
     res.render('new', {
-      registers: registers
     });
-  });
 });
 
 app.get('/agendamentos/', (req, res) => {
