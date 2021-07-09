@@ -51,8 +51,16 @@ app.get('/cadastro', (req, res) => {
 });
 
 app.get('/perfil/:id', (req, res) => {
-
-    res.render('profile');
+  let id = req.params;
+  Register.findAll({
+    raw: true, 
+    where: {id: id}
+  }).then((registers) => {
+    console.log (registers)
+    res.render('profile', {
+      registers: registers
+    });
+  });
   
 });
 
