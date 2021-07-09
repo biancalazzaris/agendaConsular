@@ -79,15 +79,15 @@ app.get('/cadastro', (req, res) => {
 });
 
 app.get('/perfil/:id', (req, res) => {
-  console.log(req.params.id);
   const id = req.params.id;
   Register.findOne({
     raw: true, 
     where: {id: id}
   }).then((register) => {
-    console.log (register)
+    console.log (registers)
     res.render('profile', {
-      register: register
+      registers: registers,
+      id
     });
   });
   
