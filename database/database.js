@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const connection = new Sequelize('agendaconsular', 'root', 'sqlserver', {
+const connection = new Sequelize('agenda', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql',
   define: {

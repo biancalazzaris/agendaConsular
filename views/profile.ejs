@@ -2,16 +2,14 @@
 <html lang="pt-br">
 
 <%- include('./partials/header.ejs') %>
-<% registers.forEach(registers=> { %>
 <div class="container-fluid bg-body">
-    <div class="d-flex justify-content-center">
-        <%- include('./partials/menu.ejs') %>
-        <div class="p-4 m-4 col-7 bg-light ">
-            <h1>Meu perfil</h1>
-            <p><%= registers.id %></p>
-            <%= registers.nome %>
+    <div class="card mt-4">
+        <div class="card-body">
+          <h1>Meu perfil</h1>
+          <h5 class="card-title"> <%= registers.nome %> | <%= registers.email %></h5>
+          <p class="card-text"><%= registers.telefone %></p>
+          <a href="#" class="btn btn-primary">Editar perfil</a>
         </div>
-    </div>
+      </div>
 </div>
-<% }); %>
 <%- include ('./partials/footer.ejs') %>

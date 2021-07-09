@@ -1,6 +1,6 @@
+const { response } = require('express');
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const Register = require('./database/cadastro');
 
 app.set('view engine', 'ejs');
@@ -47,18 +47,33 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/cadastro', (req, res) => {
+  console.log('jasmasasa');
   res.render('formcadastro');
 });
 
+app.get('/user/:id', (req, res) => {
+  const id = req.params.id;
+  Register.findOne({
+    raw: true, 
+    where: {id: id}
+  }).then((perfil) => {
+    console.log (perfil)
+    res.render('profile', {
+      registers: registers
+    });
+  });
+})
+
 app.get('/perfil/:id', (req, res) => {
-  let id = req.params;
-  Register.findAll({
+  let id = req.params.id;
+  Register.findOne({
     raw: true, 
     where: {id: id}
   }).then((registers) => {
     console.log (registers)
     res.render('profile', {
-      registers: registers
+      registers: registers,
+      id
     });
   });
   
@@ -79,10 +94,6 @@ app.get('novasolicitacao/:id', (req, res) => {
 app.get('/agendamentos/', (req, res) => {
   res.render('view');
 });
-
-
-
-
 
 //recebendo dados do form CADASTRO
 // app.post('/salvarcadastro', (req, res) => {
