@@ -21,7 +21,8 @@ const Register = connection.define('register', {
   senha: {
     type: Sequelize.STRING,
     allowNull: false,
-  },
+  }, 
+
 });
 
 Register.sync({force: false}).then(() => {});

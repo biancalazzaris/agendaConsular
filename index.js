@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+
 const Register = require('./database/cadastro');
+const Agenda = require('./database/agenda');
+
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -29,21 +32,46 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
   res.render('login');
+});
 
-  // const email = req.params.email
-  // const senha = req.params.senha
+app.post('/loginapp', (req, res) => {
 
-  // res.redirect('index');
+  const email = req.body.email
+  const senha = req.body.senha
+
+  Register.findOne({
+    raw:true, 
+    where: {
+      email: email,
+    }
+  }).then((register) => {
+    
+    console.log (register.id)
+    if (senha == register.senha) {
+      res.redirect('/home/'+(register.id));
+    } else {
+      console.log('senha inválida')
+    }
+  })
+  
   // se email & senha for diferente vazio
   // console.log {erro}
   // se email & senha = email & senha no banco então console.log conectado
 });
 
-// app.get('/index', (req, res) => {
-//     res.render('index');
-//   });
-app.get('/home', (req, res) => {
-  res.render('home');
+
+app.get('/home/:id', (req, res) => {
+  console.log(req.params.id);
+  const id = req.params.id;
+  Register.findOne({
+    raw: true, 
+    where: {id: id}
+  }).then((register) => {
+    console.log (register)
+    res.render('home', {
+      register: register
+    });
+  });
 });
 
 app.get('/cadastro', (req, res) => {
@@ -51,8 +79,9 @@ app.get('/cadastro', (req, res) => {
 });
 
 app.get('/perfil/:id', (req, res) => {
-  let id = req.params;
-  Register.findAll({
+  console.log(req.params.id);
+  const id = req.params.id;
+  Register.findOne({
     raw: true, 
     where: {id: id}
   }).then((register) => {
@@ -72,24 +101,6 @@ app.get('/novasolicitacao/', (req, res) => {
 app.get('/agendamentos/', (req, res) => {
   res.render('view');
 });
-
-
-
-
-
-//recebendo dados do form CADASTRO
-// app.post('/salvarcadastro', (req, res) => {
-//   let pessoa = {
-//      nome : req.body.nome,
-//      email : req.body.email,
-//      telefone : req.body.tel,
-//      cpf : req.body.cpf,
-//      senha : req.body.senha,
-//   };
-//   console.log(pessoa)
-//   res.send(`Formulário enviado para o servidor', ${pessoa}`);
-// });
-
 
 
 //recebendo dados do form
@@ -114,7 +125,27 @@ app.post('/salvarcadastro', (req, res) => {
   });
 });
 
+app.post('/salvaragenda', (req, res) => {
+  const servico = req.body.servico;
+  const data = req.body.data;
+  const hora = req.body.hora;
 
+// salvar a perguntar no Banco
+  Agenda.create({
+    servico: servico,
+    data: data,
+    hora: hora
+  }).then(() => {
+    res.redirect('/home');
+  }).catch((error) => {
+    console.log(error);
+  }),
+  include; [{
+    association: Agenda.Register,
+    include: [ Register.id ]
+  }]
+
+});
 
 
 // iniciando nosso servidor

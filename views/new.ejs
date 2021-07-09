@@ -8,11 +8,13 @@
     <div class="d-flex justify-content-center">
     <%- include('./partials/menu.ejs') %>
         <div class="p-4 m-4 col-5 bg-light ">
-            <form>
-
+            <form action="/salvaragenda" method="POST">
                 <div class="form-group col-7">
                   <label for="exampleFormControlSelect1">Serviço</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
+                  <select 
+                  class="form-control" 
+                  id="exampleFormControlSelect1" 
+                  name="servico">
                     <option>VISTOS (30 minutos)</option>
                     <option>CIDADANIA (60 minutos)</option>
                     <option>PASSAPORTES (30 minutos)</option>
@@ -26,9 +28,19 @@
                 </div>
                 <div class="form-group col-5">
                   <label for="">Data do atendimento</label>
-                  <input class="form-control "  type="date" data-date-format="DD MMMM YYYY" value="2021-07-10">
+                  <input 
+                  class="form-control "  
+                  type="date" 
+                  data-date-format="DD MMMM YYYY" 
+                  value="2021-07-10"
+                  name="data">
                   <label for="">Horário do atendimento</label>
-                  <input class="form-control "  type="time" min="08:00" max="18:00" value="14:00">
+                  <input 
+                  class="form-control "  
+                  type="time" 
+                  min="08:00" max="18:00" 
+                  value="14:00"
+                  name="hora">
                 </div>
                 <button type="submit" class="btn btn-success m-3">Enviar</button>
             </form>
