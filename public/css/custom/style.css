@@ -8,6 +8,8 @@ body {
     padding: 0;
 }
 
-.aside a {
-  font-size: small;
+.aside {
+  position: fixed;
+  top: 20;
+  left: 0;
 }

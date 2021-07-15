@@ -53,10 +53,6 @@ app.post('/loginapp', (req, res) => {
       console.log('senha inválida')
     }
   })
-  
-  // se email & senha for diferente vazio
-  // console.log {erro}
-  // se email & senha = email & senha no banco então console.log conectado
 });
 
 
@@ -80,27 +76,51 @@ app.get('/cadastro', (req, res) => {
 
 app.get('/perfil/:id', (req, res) => {
   const id = req.params.id;
+  console.log(id);
+  Register.findOne({
+    raw: true, 
+    where: {id: id}  
+}).then((register) => {
+      console.log (register)
+      res.render('profile', {
+        register: register,
+        id
+      })
+    });
+    
+});
+
+app.get('/novasolicitacao/:id', (req, res) => {
+  const id = req.params.id;
   Register.findOne({
     raw: true, 
     where: {id: id}
   }).then((register) => {
-    console.log (registers)
-    res.render('profile', {
-      registers: registers,
-      id
-    });
-  });
-  
-});
-
-app.get('/novasolicitacao/', (req, res) => {
+    console.log (register)
     res.render('new', {
-    });
+      register: register,
+      id
+    }).catch((erro) => {
+      console.log(erro);
+    })
+  });  
 });
 
 app.get('/agendamentos/', (req, res) => {
-  res.render('view');
+  Register.findOne({
+    raw: true, 
+    where: {id: id}
+  }).then((register) => {
+    console.log (register)
+    res.render('view', {
+      register: register,
+      id
+    }).catch((erro) => {
+      console.log(erro);
+    })
+  });  
 });
+
 
 
 //recebendo dados do form
@@ -139,12 +159,7 @@ app.post('/salvaragenda', (req, res) => {
     res.redirect('/home');
   }).catch((error) => {
     console.log(error);
-  }),
-  include; [{
-    association: Agenda.Register,
-    include: [ Register.id ]
-  }]
-
+  })
 });
 
 

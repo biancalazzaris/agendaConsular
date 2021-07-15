@@ -2,12 +2,96 @@
 <html lang="pt-br">
 
 <%- include('./partials/header.ejs') %>
-<div class="container">
-<h1>Meu perfil</h1>
-<h5 > <%= register.nome %> | <%= register.email %></h5>
-<p ><%= register.telefone %></p>
-<a href="#" class="btn btn-primary">Editar perfil</a>
+<%- include('./partials/menu.ejs') %>
 
+<div class="my-4 container col-6 text-light">
+    <div class="align-items-center border p-3">
+        <h6>Perfil</h6>
+        <hr>
+
+    <div class="form-inline py-1 justify-content-around">
+        <img src="/img/pessoa.png" alt="" style="width: 15%; border-radius: 50%; " >
+        <div class="col-3">
+            <p>Nome completo  <%= register.nome %></p>
+            <p>E-mail  <%= register.email %></p>
+            <p>Telefone <%= register.telefone %></p>
+        </div>
+        <div class="col-3 ">
+            <p>CPF <%= register.cpf %></p>
+            <p>RNE <%= register.rne %></p>
+            <p>Nr Passaporte <%= register.pass %></p>
+
+        </div>
+    </div>
+</div>    
+<div class="my-4 container text-light">
+    <div class="align-items-center border p-3">
+        <h6>Alterar seu cadastro</h6>
+        <hr>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label for="example-text-input">Nome completo</label>
+                    <input 
+                    name="nome"
+                    type="text" 
+                    class="form-control" 
+                    placeholder="<%= register.nome %>" 
+                    id="example-text-input">
+                </div>
+    
+                <div class="form-group col-4">
+                    <label for="example-cpf">CPF</label>
+                    <input 
+                    name="cpf"
+                    class="form-control" 
+                    type="text" maxlength="14" 
+                    placeholder="<%= register.cpf %>" 
+                    id="example-cpf">
+                </div>
+                <div class="form-group col-4">
+                    <label for="example-cpf">RNE</label>
+                    <input 
+                    name="cpf"
+                    class="form-control" 
+                    type="text" maxlength="14" 
+                    placeholder="<%= register.rne %>" 
+                    id="example-cpf">
+                </div>
+                <div class="form-group col-4">
+                    <label for="example-tel-input">Nr Passaporte</label>
+                    <input 
+                        name="tel"
+                        class="form-control" 
+                        type="tel" 
+                        placeholder="<%= register.pass %>" 
+                        id="example-tel-input">
+                </div>
+                <div class="form-group col-4">
+                    <label for="inputIM">Endereço de email</label>
+                    <input 
+                        name="email"
+                        type="email" 
+                        class="form-control" 
+                        placeholder="<%= register.email %>" 
+                        id="exampleInputEmail1">
+                </div>
+                <div class="form-group col-4">
+                    <label for="example-tel-input">Telefone celular</label>
+                    <input 
+                        name="tel"
+                        class="form-control" 
+                        type="tel" 
+                        placeholder="<%= register.telefone %>" 
+                        id="example-tel-input">
+                </div>
+            </div>
+            <div  class="d-flex justify-content-between">
+                <a href="/home/<%= register.id %>" class="btn btn-secondary" role="button">Voltar</a>
+                <button class="btn btn-success"> Salvar</button>
+            </div>
+        </div>
+    </div>
 </div>
-<% }); %>
+
+
 <%- include ('./partials/footer.ejs') %>
