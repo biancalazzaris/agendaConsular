@@ -4,20 +4,17 @@
 
 <div class="aside">
     <div class="p-4 ">
-        <div class=" list-group" id="list-tab" role="tablist">
-            <a href="/home/<%= register.id %>" class=" list-group-item list-group-item-action">
+        <div class="nav flex-column">
+            <a href="/home/<%= register.id %>" class="p-2 active">        
                 Início
             </a>
-            <a href="/novasolicitacao/<%= register.id %>" class=" list-group-item list-group-item-action">
-                Escolha o serviço
+            <a href="/novasolicitacao/<%= register.id %>" class="p-2">
+                Agendamentos
             </a>
-            <a href="/agendamentos/<%= register.id %>" class="list-group-item list-group-item-action">
-                Meus agendamentos
-            </a>
-            <a href="/perfil/<%= register.id %>" class="list-group-item list-group-item-action">
+            <a href="/perfil/<%= register.id %>" class="p-2">
                 Meu dados
             </a>
-            <a href="/" class="list-group-item list-group-item-action">
+            <a href="/" class="p-2">
                 Sair
             </a>
         </div>
