@@ -5,7 +5,7 @@
 <%- include('./partials/menu.ejs') %>
 
 <div class="mt-4 mb-5 p-3 container col-6 bg-light">
-    <div class="align-items-center ">
+    <div class="align-items-center p-3 ">
         <h5>Perfil</h5>
         <hr>
     <div class="form-inline py-1 justify-content-around">
@@ -29,9 +29,9 @@
         </div>
     </div>
 </div>    
-<hr class="bold">
+<hr>
 <div class="my-4 container">
-    <div class="align-items-center p-3">
+    <div class="align-items-center px-3">
         <h5>Alterar seu cadastro</h5>
         <hr>
         <form action="/editar" method="POST"></form>
@@ -58,7 +58,7 @@
                 <div class="form-group col-4">
                     <label for="example-cpf"><h6>RNE</h6></label>
                     <input 
-                    name="cpf"
+                    name="rne"
                     class="form-control" 
                     type="text" maxlength="14" 
                     placeholder="<%= register.rne %>" 
@@ -67,7 +67,7 @@
                 <div class="form-group col-4">
                     <label for="example-tel-input"><h6>Passaporte</h6></label>
                     <input 
-                        name="tel"
+                        name="passaporte"
                         class="form-control" 
                         type="tel" 
                         placeholder="<%= register.pass %>" 
@@ -96,6 +96,12 @@
                 <a href="/home/<%= register.id %>" class="btn btn-secondary" role="button">Cancelar</a>
                 <button class="btn btn-success"> Salvar</button>
             </div>
+            <hr>
+                <div class=" container">
+                    <div>
+                        <button class="btn btn-danger"> Excluir minha conta</button>
+                    </div>
+                </div>
         </div>
     </div>
 </div>

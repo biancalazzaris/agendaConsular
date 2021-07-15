@@ -2,9 +2,9 @@ const Sequelize = require('sequelize');
 const connection = require('./database');
 
 const Register = connection.define('register', {
-    nome: {
-    type: Sequelize.STRING,
-    allowNull: false,
+  nome: {
+  type: Sequelize.STRING,
+  allowNull: false,
   },
   email: {
     type: Sequelize.STRING,
@@ -15,6 +15,14 @@ const Register = connection.define('register', {
     allowNull: false,
   },
   cpf: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  rne: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  passaporte: {
     type: Sequelize.STRING,
     allowNull: false,
   },
