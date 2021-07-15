@@ -2,12 +2,109 @@
 <html lang="pt-br">
 
 <%- include('./partials/header.ejs') %>
-<div class="container">
-<h1>Meu perfil</h1>
-<h5 > <%= register.nome %> | <%= register.email %></h5>
-<p ><%= register.telefone %></p>
-<a href="#" class="btn btn-primary">Editar perfil</a>
+<%- include('./partials/menu.ejs') %>
 
+<div class="mt-4 mb-5 p-3 container col-6 bg-light">
+    <div class="align-items-center p-3 ">
+        <h5>Perfil</h5>
+        <hr>
+    <div class="form-inline py-1 justify-content-around">
+        <img src="/img/pessoa.png" alt="" style="width: 15%; border-radius: 50%; " >
+        <div class="col-4">
+            <h6>Nome</h6>  
+                <p><%= register.nome %></p>
+            <h6>E-mail</h6>
+                <p><%= register.email %></p>
+            <h6>Telefone </h6>
+                <p><%= register.telefone %></p>
+        </div>
+        <div class="col-4 ">
+            <h6>CPF </h6>
+            <p> <%= register.cpf %></p>
+            <h6>RNE </h6>
+            <p> <%= register.rne %></p>
+            <h6>Passaporte </h6>
+            <p><%= register.pass %></p>
+
+        </div>
+    </div>
+</div>    
+<hr>
+<div class="my-4 container">
+    <div class="align-items-center px-3">
+        <h5>Alterar seu cadastro</h5>
+        <hr>
+        <form action="/editar" method="POST"></form>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label for="example-text-input"><h6> Nome completo</h6></label>
+                    <input 
+                    name="nome"
+                    type="text" 
+                    class="form-control" 
+                    placeholder="<%= register.nome %>" 
+                    id="example-text-input">
+                </div>
+    
+                <div class="form-group col-4">
+                    <label for="example-cpf"><h6>CPF</h6></label>
+                    <input 
+                    name="cpf"
+                    class="form-control" 
+                    type="text" maxlength="14" 
+                    placeholder="<%= register.cpf %>" 
+                    id="example-cpf">
+                </div>
+                <div class="form-group col-4">
+                    <label for="example-cpf"><h6>RNE</h6></label>
+                    <input 
+                    name="rne"
+                    class="form-control" 
+                    type="text" maxlength="14" 
+                    placeholder="<%= register.rne %>" 
+                    id="example-cpf">
+                </div>
+                <div class="form-group col-4">
+                    <label for="example-tel-input"><h6>Passaporte</h6></label>
+                    <input 
+                        name="passaporte"
+                        class="form-control" 
+                        type="tel" 
+                        placeholder="<%= register.pass %>" 
+                        id="example-tel-input">
+                </div>
+                <div class="form-group col-4">
+                    <label for="inputIM"><h6>E-mail</h6></label>
+                    <input 
+                        name="email"
+                        type="email" 
+                        class="form-control" 
+                        placeholder="<%= register.email %>" 
+                        id="exampleInputEmail1">
+                </div>
+                <div class="form-group col-4">
+                    <label for="example-tel-input"><h6>Telefone</h6></label>
+                    <input 
+                        name="tel"
+                        class="form-control" 
+                        type="tel" 
+                        placeholder="<%= register.telefone %>" 
+                        id="example-tel-input">
+                </div>
+            </div>
+            <div  class="py-2 d-flex justify-content-between">
+                <a href="/home/<%= register.id %>" class="btn btn-secondary" role="button">Cancelar</a>
+                <button class="btn btn-success"> Salvar</button>
+            </div>
+            <hr>
+                <div class=" container">
+                    <div>
+                        <button class="btn btn-danger"> Excluir minha conta</button>
+                    </div>
+                </div>
+        </div>
+    </div>
 </div>
-<% }); %>
+
+
 <%- include ('./partials/footer.ejs') %>
