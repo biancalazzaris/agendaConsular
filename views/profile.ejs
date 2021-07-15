@@ -4,33 +4,40 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/menu.ejs') %>
 
-<div class="my-4 container col-6 text-light">
-    <div class="align-items-center border p-3">
-        <h6>Perfil</h6>
+<div class="mt-4 mb-5 container col-6 bg-light">
+    <div class="align-items-center p-3">
+        <h5>Perfil</h5>
         <hr>
-
     <div class="form-inline py-1 justify-content-around">
         <img src="/img/pessoa.png" alt="" style="width: 15%; border-radius: 50%; " >
-        <div class="col-3">
-            <p>Nome completo  <%= register.nome %></p>
-            <p>E-mail  <%= register.email %></p>
-            <p>Telefone <%= register.telefone %></p>
+        <div class="col-4">
+            <h6>Nome</h6>  
+                <p><%= register.nome %></p>
+            <h6>E-mail</h6>
+                <p><%= register.email %></p>
+            <h6>Telefone </h6>
+                <p><%= register.telefone %></p>
         </div>
-        <div class="col-3 ">
-            <p>CPF <%= register.cpf %></p>
-            <p>RNE <%= register.rne %></p>
-            <p>Nr Passaporte <%= register.pass %></p>
+        <div class="col-4 ">
+            <h6>CPF </h6>
+            <p> <%= register.cpf %></p>
+            <h6>RNE </h6>
+            <p> <%= register.rne %></p>
+            <h6>Passaporte </h6>
+            <p><%= register.pass %></p>
 
         </div>
     </div>
 </div>    
-<div class="my-4 container text-light">
-    <div class="align-items-center border p-3">
-        <h6>Alterar seu cadastro</h6>
+<hr class="bold">
+<div class="my-4 container">
+    <div class="align-items-center p-3">
+        <h5>Alterar seu cadastro</h5>
         <hr>
+        <form action="/editar" method="POST"></form>
             <div class="form-row">
                 <div class="form-group col-4">
-                    <label for="example-text-input">Nome completo</label>
+                    <label for="example-text-input"><h6> Nome completo</h6></label>
                     <input 
                     name="nome"
                     type="text" 
@@ -40,7 +47,7 @@
                 </div>
     
                 <div class="form-group col-4">
-                    <label for="example-cpf">CPF</label>
+                    <label for="example-cpf"><h6>CPF</h6></label>
                     <input 
                     name="cpf"
                     class="form-control" 
@@ -49,7 +56,7 @@
                     id="example-cpf">
                 </div>
                 <div class="form-group col-4">
-                    <label for="example-cpf">RNE</label>
+                    <label for="example-cpf"><h6>RNE</h6></label>
                     <input 
                     name="cpf"
                     class="form-control" 
@@ -58,7 +65,7 @@
                     id="example-cpf">
                 </div>
                 <div class="form-group col-4">
-                    <label for="example-tel-input">Nr Passaporte</label>
+                    <label for="example-tel-input"><h6>Passaporte</h6></label>
                     <input 
                         name="tel"
                         class="form-control" 
@@ -67,7 +74,7 @@
                         id="example-tel-input">
                 </div>
                 <div class="form-group col-4">
-                    <label for="inputIM">Endereço de email</label>
+                    <label for="inputIM"><h6>E-mail</h6></label>
                     <input 
                         name="email"
                         type="email" 
@@ -76,7 +83,7 @@
                         id="exampleInputEmail1">
                 </div>
                 <div class="form-group col-4">
-                    <label for="example-tel-input">Telefone celular</label>
+                    <label for="example-tel-input"><h6>Telefone</h6></label>
                     <input 
                         name="tel"
                         class="form-control" 
@@ -85,8 +92,8 @@
                         id="example-tel-input">
                 </div>
             </div>
-            <div  class="d-flex justify-content-between">
-                <a href="/home/<%= register.id %>" class="btn btn-secondary" role="button">Voltar</a>
+            <div  class="py-2 d-flex justify-content-between">
+                <a href="/home/<%= register.id %>" class="btn btn-secondary" role="button">Cancelar</a>
                 <button class="btn btn-success"> Salvar</button>
             </div>
         </div>
