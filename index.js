@@ -88,11 +88,33 @@ app.post('/salvarcadastro', (req, res) => {
   });
 });
 
+//UPDATE Cadastro 
+app.post('/editarProfile/:id', (req, res) => {
+  const id = req.params.id;
+  const nome = req.body.nome;
+  const email = req.body.email;
+  const telefone = req.body.tel;
+  const cpf = req.body.cpf;
+  const rne = req.body.rne;
+  const passaporte = req.body.passaporte
 
+  Register.update({
+    nome: nome,
+    email: email,
+    telefone: telefone,
+    cpf: cpf,
+    rne: rne,
+    passaporte: passaporte }, {
+      where: {id:id}
+  }).then((register) => {
+    res.redirect('/home/' +req.params.id);
+  }).catch((error) => {
+    console.log(error);
+  });
+});
 
 //página inicial logado ou home
 app.get('/home/:id', (req, res) => {
-  console.log(req.params.id);
   const id = req.params.id;
   Register.findOne({
     raw: true, 
@@ -103,6 +125,21 @@ app.get('/home/:id', (req, res) => {
     });
   });
 });
+
+// Excluindo a conta, delete registro cadastro
+app.get('/remove/:id', (req, res) => {
+    const id = req.params.id;
+    Register.destroy({ 
+      where: { id : id } 
+    }).then(() => {
+      console.log('Registro apagado com sucesso');
+      res.redirect('/');
+    }).catch((error) => {
+      console.log('Deu erro:', error);
+    });
+  })
+  
+
 
 
 //acessando o cadastro logado ou exibe cadastro
@@ -122,37 +159,75 @@ app.get('/perfil/:id', (req, res) => {
 
 
 //agendar serviço, horário
-app.get('/novasolicitacao/:id', (req, res) => {
-  const id = req.params.id;
-  Register.findOne({
+app.get('/agendamento/:registerID', (req, res) => {
+  const registerID = req.params.registerID;
+  Agenda.findAll({
     raw: true, 
-    where: {id: id}
-  }).then((register) => {
-    res.render('new', {
-      register: register,
-      id
-    })
-  });  
+    where: { registerID :registerID },
+  }).then((agendas) => {
+    console.log(agendas, registerID);
+    res.render('agendamento', {
+      agendas: agendas, 
+      registerID: registerID
+    });
+  });
+  
+
 });
 
 
+
 //salvando o agendamento no banco
-app.post('/salvaragenda', (req, res) => {
+app.post('/salvaragenda/:id', (req, res) => {
+  const id = req.params.id;
   const servico = req.body.servico;
   const data = req.body.data;
   const hora = req.body.hora;
 
 //criando o agendamento no banco
   Agenda.create({
+    registerID: id,
     servico: servico,
     data: data,
     hora: hora
   }).then(() => {
-    res.redirect('/home');
+    res.redirect('/agendamento/' + req.params.id );
   }).catch((error) => {
     console.log(error);
-  })
+  });
+
 });
+
+// exibindo
+app.get('/novaagenda/:registerID', (req, res) => {
+  const registerID = req.params.registerID;
+  Agenda.findOne({
+    raw: true, 
+    where: { registerID : registerID } 
+  }).then((agendas) => {
+    res.render('novaagenda', {
+      agendas: agendas,
+      registerID : registerID
+    })
+  }); 
+});
+
+
+//deletando agenda excluindo
+app.get('/removeagenda/:id', (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  Register.destroy({ 
+    where: { id : id } 
+  }).then(() => {
+    console.log('Agendamento excluido com sucesso');
+    res.redirect('/home/' + req.params.id, {
+      id
+    });
+  }).catch((error) => {
+    console.log('Deu erro:', error);
+  });
+})
 
 
 

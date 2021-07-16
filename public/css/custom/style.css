@@ -24,7 +24,7 @@ a {
   color: black;
 }
 
- a:active, a:hover{
+.aside a:active, .aside a:hover{
   border-left: green 2px solid ;
   color: green;
   text-decoration: none;
