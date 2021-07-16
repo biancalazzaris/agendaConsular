@@ -1,0 +1,69 @@
+<%- include('./partials/header.ejs') %>
+<div class="aside">
+  <div class="p-4 ">
+      <div class="nav flex-column">
+          <a href="/home/<%= registerID %>" class="p-2 active">        
+              Início
+          </a>
+          <a href="/agendamento/<%= registerID %>" class="p-2">
+              Agendamentos
+          </a>
+          <a href="/perfil/<%= registerID %>" class="p-2">
+              Meu dados
+          </a>
+          <a href="/" class="p-2">
+              Sair
+          </a>
+      </div>
+  </div>
+</div>
+
+<div class="mt-4 mb-5 p-3 container col-6 bg-light">
+  <div class="align-items-center ">
+      <div class="bg-light ">
+    <section>
+      <h5>Agendamentos:</h5>
+      <hr>
+      <p>Lembramos a todos que o serviço de Agendamento On-Line é um aplicativo gerênciado pelo servidor ministerial em Roma e que, portanto, a abertura de novas vagas acontece de forma totalmente automática. O servidor abrirá um novo grupo de vagas agendáveis a cada dia, por volta das 24:00 (hora italiana), fazendo avançar a janela de abertura. Caso o novo dia colocado à disposição seja um dia de abertura ao público as vagas serão visíveis e utilizáveis, caso seja um dia de fechamento ou festivo não haverá vagas disponíveis e será necessário aguardar 24 horas para o início de um novo ciclo.</p>
+    </section>
+    <section>
+        <h5>Meus Agendamentos:</h5>
+        
+        <table class="table table-hover my-4">
+          <thead>
+            <tr>
+              <th scope="col">Nrº</th>
+              <th scope="col">Serviço</th>
+              <th scope="col">Data</th>
+              <th scope="col">Horário</th>
+              <th scope="col"> Ações</th>
+            </tr>
+            
+          </thead>
+          <!-- <%= registerID %>  -->
+          <% agendas.forEach(agendas=> { %>
+          <tbody>
+            <tr>
+              <th><%= agendas.registerID %></th>
+              <th><%= agendas.id %></th>
+              <td><%= agendas.servico %></td>
+              <td><%= agendas.data %></td>
+              <td><%= agendas.hora %></td>
+              <td><i class="fas fa-pencil-alt"></i></td>
+              <td><a 
+                href="/removeagenda/<%= agendas.id %> " 
+                onclick="return confirm('Você tem certeza que deseja excluir?');"><i class="fas fa-trash"></i></a></td>
+                
+            </tr>
+          </tbody>
+          <% }); %>
+        </table>
+      </section>
+
+      <a href="/novaagenda/<%= registerID %>" class="btn btn-success">Fazer agendamento</a>
+
+    
+  </div>
+</div>
+
+<%- include ('./partials/footer.ejs') %>

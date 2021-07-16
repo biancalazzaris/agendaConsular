@@ -16,15 +16,12 @@ const Register = connection.define('register', {
   },
   cpf: {
     type: Sequelize.STRING,
-    allowNull: false,
   },
   rne: {
     type: Sequelize.STRING,
-    allowNull: false,
   },
   passaporte: {
     type: Sequelize.STRING,
-    allowNull: false,
   },
   senha: {
     type: Sequelize.STRING,

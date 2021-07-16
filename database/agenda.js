@@ -2,6 +2,9 @@ const Sequelize = require('sequelize');
 const connection = require('./database');
 
 const Agenda = connection.define('agenda', {
+    registerID: {
+      type: Sequelize.STRING
+    },
     data: {
     type: Sequelize.DATE,
     allowNull: false,
@@ -10,7 +13,7 @@ const Agenda = connection.define('agenda', {
     type: Sequelize.TIME,
     allowNull: false,
   },
-  servico: {
+    servico: {
     type: Sequelize.STRING,
     allowNull: false,
   },   
