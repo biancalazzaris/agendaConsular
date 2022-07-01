@@ -1,3 +1,5 @@
+horusec generate
+
 on: [push]
 
 jobs:
@@ -5,8 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Horusec Scan
     steps:
-      - name: Run Horusec
-        id: run_horusec
-        uses: fike/horusec-action@v0.1
-        with:
-          arguments: --config-file-path=horusec-config.json
+    - uses: actions/checkout@v3
+    - name: Run Horusec
+      id: run_horusec
+      uses: fike/horusec-action@v0.2.1
+      with:
+        arguments: -c=horusec-config.json -p .
