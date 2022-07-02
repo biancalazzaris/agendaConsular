@@ -9,5 +9,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Running Horusec Security
-      run: |
-        horusec start -p="./"  -O="./output.json" -e="true" --information-severity=true 
+      run: | 
+        curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+        horusec start -p="./" -e="true" -log-level="debug" -O="./output.json"
